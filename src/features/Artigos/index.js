@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from '../../shared/components/Layout';
 
 function Artigos() {
-  return <div>123</div>;
+  return <Layout>1233</Layout>;
 }
 
 export default Artigos;
