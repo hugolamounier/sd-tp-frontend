@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 function Layout({ children }) {
   return (
     <div className="container">
-      <Navbar />
+      {/*<Navbar />*/}
       <div>{children}</div>
     </div>
   );
