@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../shared/components/Layout';
 import ArtigoService from '../../services/ArtigoService';
+import FormHelper from '../../shared/helpers/FormHelper';
 
 function Artigos() {
   const handleOnSubmit = async (event) => {
@@ -8,8 +9,13 @@ function Artigos() {
     const formData = new FormData(event.target);
 
     try {
-      await ArtigoService.insertArtigo({ formData });
-      alert('Artigo inserido com sucesso!');
+      const response = await ArtigoService.insertArtigo({ formData: FormHelper.formDataToJson({formData}) });
+
+      if(response.status === 201) {
+        alert('Artigo inserido com sucesso!');
+        event.target.reset();
+      }
+
     } catch (e) {
       console.log(e);
     }
