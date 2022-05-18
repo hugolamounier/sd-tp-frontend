@@ -1,5 +1,5 @@
 class ArtigoService {
-  static API_URL = 'http://127.0.0.1:8000/artigos';
+  static API_URL = 'http://127.0.0.1:8000/artigos/';
 
   static async insertArtigo({ formData }) {
     var response = await fetch(`${this.API_URL}`, {
