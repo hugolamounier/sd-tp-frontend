@@ -27,9 +27,11 @@ class ArtigoService {
     return response;
   }
 
-  static async getArtigo({id = 0}){
+  static async getArtigo({id = 0, search = null}){
     const haveId = id === 0 ? "" : id;
-      const response = await fetch(`${this.API_URL}/${haveId}`, {
+    const haveSearch = search ? `?search=${search}` : "";
+
+      const response = await fetch(`${this.API_URL}/${haveId}${haveSearch}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',

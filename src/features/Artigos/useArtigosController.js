@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ArtigoService from '../../services/ArtigoService';
 import FormHelper from '../../shared/helpers/FormHelper';
+import { ArtigosContext } from './ArtigosContext';
 
 export default function useArtigosController(){
-  const [artigos, setArtigos] = useState([]);
 
-  const getArtigos = async () => {
+  const {artigos, setArtigos} = useContext(ArtigosContext);
+
+  const getArtigos = async (search = null) => {
     try{
-      const data = await ArtigoService.getArtigo({});
+      const data = await ArtigoService.getArtigo({search: search});
       setArtigos(data);
     }catch(e){
       console.log(e);

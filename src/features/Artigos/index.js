@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../../shared/components/Layout';
 import useArtigosController from './useArtigosController';
 import { useHistory } from 'react-router-dom';
+import { ArtigosContext } from './ArtigosContext';
 
 function Artigos() {
   const history = useHistory();
-  const { getArtigos, artigos, deleteArtigo } = useArtigosController();
+  const { getArtigos, deleteArtigo } = useArtigosController();
+  const { artigos } = useContext(ArtigosContext);
 
   useEffect(() => {
     void getArtigos();
@@ -25,7 +27,7 @@ function Artigos() {
         </tr>
         </thead>
         <tbody>
-        {artigos.map(artigo => (<tr>
+        {artigos?.map(artigo => (<tr>
           <th scope='row'>{artigo.id}</th>
           <td>{artigo.titulo}</td>
           <td>{artigo.autor}</td>

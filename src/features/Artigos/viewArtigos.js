@@ -34,7 +34,7 @@ function ViewArtigos() {
       <h4><b>Título:</b> {loadedArtigo?.titulo}</h4>
       <h4><b>Autor:</b> {loadedArtigo?.autor}</h4>
       <h4><b>Ano de publicação:</b> {loadedArtigo?.anoPublicacao}</h4>
-      <h4 style={{marginBottom: '2rem'}}><b>URL:</b> <a href={loadedArtigo?.url} target="_blank">{loadedArtigo?.url}</a></h4>
+      <h4 style={{marginBottom: '2rem'}}><b>URL:</b> <a href={loadedArtigo?.autor} target="_blank">{loadedArtigo?.autor}</a></h4>
       <p>
         <h5>Descrição</h5>
         {loadedArtigo?.descricao}
