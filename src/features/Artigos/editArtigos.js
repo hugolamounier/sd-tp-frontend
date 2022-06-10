@@ -28,27 +28,35 @@ function EditArtigos() {
 
   const loadedArtigo = artigo[0];
 
+  const handleOnSubmit = async (e) => {
+    await updateArtigo(e, id).then(() => {
+      getArtigo(id).then((data) => {
+        setArtigo(data);
+      });
+    })
+  }
+
   return (
     <Layout>
       <h1>Artigo: #{loadedArtigo?.id}</h1>
-      <form onSubmit={(e) => updateArtigo(e)}>
+      <form onSubmit={(e) => handleOnSubmit(e)}>
         <div className="mb-3">
           <label htmlFor="titulo" className="form-label">
             Título
           </label>
-          <input type="text" className="form-control" id="titulo" name="titulo" value={loadedArtigo?.titulo} required />
+          <input type="text" className="form-control" id="titulo" name="titulo" defaultValue={loadedArtigo?.titulo} required />
         </div>
         <div className="mb-3">
           <label htmlFor="autor" className="form-label">
             Autor
           </label>
-          <input type="text" className="form-control" id="autor" name="autor" value={loadedArtigo?.autor} required />
+          <input type="text" className="form-control" id="autor" name="autor" defaultValue={loadedArtigo?.autor} required />
         </div>
         <div className="mb-3">
           <label htmlFor="descricao" className="form-label">
             Descrição
           </label>
-          <textarea className="form-control" id="descricao" name="descricao" value={loadedArtigo?.descricao} required />
+          <textarea className="form-control" id="descricao" name="descricao" defaultValue={loadedArtigo?.descricao} required />
         </div>
         <div className="mb-3">
           <label htmlFor="anoPublicacao" className="form-label">
@@ -61,7 +69,7 @@ function EditArtigos() {
             className="form-control"
             id="anoPublicacao"
             name="anoPublicacao"
-            value={loadedArtigo?.anoPublicacao}
+            defaultValue={loadedArtigo?.anoPublicacao}
             required
           />
         </div>
@@ -69,7 +77,7 @@ function EditArtigos() {
           <label htmlFor="url" className="form-label">
             URL do artigo
           </label>
-          <input type="text" className="form-control" id="url" name="url" value={loadedArtigo?.url} required />
+          <input type="text" className="form-control" id="url" name="url" defaultValue={loadedArtigo?.url} required />
         </div>
         <button type="submit" className="btn btn-primary">
           Salvar

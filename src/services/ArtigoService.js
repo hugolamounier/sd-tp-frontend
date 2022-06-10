@@ -14,9 +14,9 @@ class ArtigoService {
     return response;
   }
 
-  static async updateArtigo({ formData }) {
-    const response = await fetch(`${this.API_URL}/`, {
-      method: 'PATCH',
+  static async updateArtigo({ formData, id }) {
+    const response = await fetch(`${this.API_URL}/${id}/`, {
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

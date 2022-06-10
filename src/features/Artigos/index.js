@@ -34,7 +34,9 @@ function Artigos() {
             <button style={{ marginRight: '0.5rem' }} type='button' className='btn btn-info'
                     onClick={() => history.push(`/artigo/${artigo.id}`)}>Visualizar
             </button>
-            <button style={{ marginRight: '0.5rem' }} type='button' className='btn btn-primary'>Editar</button>
+            <button style={{ marginRight: '0.5rem' }} type='button' className='btn btn-primary'
+                    onClick={() => history.push(`/edit-artigo/${artigo.id}`)}>Editar
+            </button>
             <button type='button' className='btn btn-danger' onClick={() => deleteArtigo({ id: artigo.id })}>Apagar
             </button>
           </td>

@@ -51,14 +51,17 @@ export default function useArtigosController(){
     }
   };
 
-  const updateArtigo = async (event) => {
+  const updateArtigo = async (event, id) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
     try {
-      const response = await ArtigoService.insertArtigo({ formData: FormHelper.formDataToJson({formData}) });
+      const response = await ArtigoService.updateArtigo({
+        formData: FormHelper.formDataToJson({formData}),
+        id
+      });
 
-      if(response.status === 201) {
+      if(response.status === 200) {
         alert('Artigo atualizado com sucesso!');
         event.target.reset();
       }
