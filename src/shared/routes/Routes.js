@@ -3,11 +3,14 @@ import AddArtigos from '../../features/Artigos/addArtigos';
 import Artigos from '../../features/Artigos';
 import EditArtigos from '../../features/Artigos/editArtigos';
 import ViewArtigos from '../../features/Artigos/viewArtigos';
+import Home from '../../features/Home';
+import Login from '../../features/Login';
 
 function Routes() {
   return (
     <Switch>
       <Route exact component={Home} path="/" />
+      <Route exact component={Login} path="/login" />
       <Route exact component={Artigos} path="/artigos" />
       <Route exact component={AddArtigos} path="/add-artigo" />
       <Route exact component={EditArtigos} path="/edit-artigo/:id" />
