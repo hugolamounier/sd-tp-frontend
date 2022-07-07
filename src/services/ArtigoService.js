@@ -1,54 +1,30 @@
-class ArtigoService {
-  static API_URL = 'http://127.0.0.1:8000/artigos';
+import axiosInstance from '../shared/axiosInstance/axiosInstance';
 
+class ArtigoService {
   static async insertArtigo({ formData }) {
-    const response = await fetch(`${this.API_URL}/`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: formData,
-    });
+    const response = await axiosInstance.post(`/artigos/`, formData);
 
     return response;
   }
 
   static async updateArtigo({ formData, id }) {
-    const response = await fetch(`${this.API_URL}/${id}/`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: formData,
-    });
+    const response = await axiosInstance.put(`/artigos/${id}/`, formData);
 
     return response;
   }
 
-  static async getArtigo({id = 0, search = null}){
-    const haveId = id === 0 ? "" : id;
-    const haveSearch = search ? `?search=${search}` : "";
+  static async getArtigo({ id = 0, search = null }) {
+    const haveId = id === 0 ? '' : id;
+    const haveSearch = search ? `?search=${search}` : '';
 
-      const response = await fetch(`${this.API_URL}/${haveId}${haveSearch}`, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
-      return await response.json();
+    const { data } = await axiosInstance.get(`/artgios/${haveId}${haveSearch}`);
+
+    return await data;
   }
 
-  static async deleteArtigo({id}){
-    const response = fetch(`${this.API_URL}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    });
+  static async deleteArtigo({ id }) {
+    const response = await axiosInstance.delete(`/${id}`);
+
     return response;
   }
 }

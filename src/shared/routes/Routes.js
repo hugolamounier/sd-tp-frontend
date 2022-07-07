@@ -7,7 +7,8 @@ import ViewArtigos from '../../features/Artigos/viewArtigos';
 function Routes() {
   return (
     <Switch>
-      <Route exact component={Artigos} path="/" />
+      <Route exact component={Home} path="/" />
+      <Route exact component={Artigos} path="/artigos" />
       <Route exact component={AddArtigos} path="/add-artigo" />
       <Route exact component={EditArtigos} path="/edit-artigo/:id" />
       <Route exact component={ViewArtigos} path="/artigo/:id" />
