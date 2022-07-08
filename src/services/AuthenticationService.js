@@ -13,6 +13,7 @@ export default class AuthenticationService {
       }
       return Promise.resolve();
     } catch (e) {
+      console.log(e);
       SessionService.clearSessionStorage();
       alert('Usuário ou senha inválido. Tente novamente.');
       return Promise.reject();

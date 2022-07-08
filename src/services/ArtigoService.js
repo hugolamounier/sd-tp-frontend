@@ -17,7 +17,7 @@ class ArtigoService {
     const haveId = id === 0 ? '' : id;
     const haveSearch = search ? `?search=${search}` : '';
 
-    const { data } = await axiosInstance.get(`/artgios/${haveId}${haveSearch}`);
+    const { data } = await axiosInstance.get(`/artigos/${haveId}${haveSearch}`);
 
     return await data;
   }
