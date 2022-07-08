@@ -5,16 +5,17 @@ import EditArtigos from '../../features/Artigos/editArtigos';
 import ViewArtigos from '../../features/Artigos/viewArtigos';
 import Home from '../../features/Home';
 import Login from '../../features/Login';
+import PrivateRoute from '../components/PrivateRoute';
 
 function Routes() {
   return (
     <Switch>
       <Route exact component={Home} path="/" />
       <Route exact component={Login} path="/login" />
-      <Route exact component={Artigos} path="/artigos" />
-      <Route exact component={AddArtigos} path="/add-artigo" />
-      <Route exact component={EditArtigos} path="/edit-artigo/:id" />
-      <Route exact component={ViewArtigos} path="/artigo/:id" />
+      <PrivateRoute exact component={Artigos} path="/artigos" />
+      <PrivateRoute exact component={AddArtigos} path="/add-artigo" />
+      <PrivateRoute exact component={EditArtigos} path="/edit-artigo/:id" />
+      <PrivateRoute exact component={ViewArtigos} path="/artigo/:id" />
     </Switch>
   );
 }

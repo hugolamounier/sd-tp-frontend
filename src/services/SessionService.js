@@ -21,9 +21,6 @@ export default class SessionService {
       const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
       if (accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
 
-      config.headers['Access-Control-Allow-Origin'] = '*';
-      config.headers['Access-Control-Allow-Headers'] =
-        'Origin, X-Requested-With, Content-Type, Accept';
       config.headers['Content-Type'] = 'application/json';
 
       return config;
