@@ -42,7 +42,7 @@ function Navbar() {
                 <button
                   type="button"
                   className="btn btn-link nav-link"
-                  onClick={() => history.push('/')}
+                  onClick={() => history.push('/login')}
                 >
                   Home
                 </button>

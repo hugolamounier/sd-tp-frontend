@@ -4,12 +4,13 @@ import useArtigosController from './useArtigosController';
 import { useHistory } from 'react-router-dom';
 import { ArtigosContext } from './ArtigosContext';
 import useUser from '../../shared/hooks/useUser';
+import SessionService from '../../services/SessionService';
 
 function Artigos() {
   const history = useHistory();
   const { getArtigos, deleteArtigo } = useArtigosController();
   const { artigos } = useContext(ArtigosContext);
-  const { isAdmin } = useUser();
+  const isAdmin = SessionService.isAdmin();
 
   useEffect(() => {
     void getArtigos();
