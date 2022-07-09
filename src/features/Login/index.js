@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FormHelper from '../../shared/helpers/FormHelper';
 import AuthenticationService from '../../services/AuthenticationService';
+import SessionService from '../../services/SessionService';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+  const history = useHistory();
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -11,6 +14,10 @@ const Login = () => {
       formData: FormHelper.formDataToJson({ formData }),
     });
   };
+
+  useEffect(() => {
+    if (SessionService.isUserAuthenticated()) history.push('/artigos');
+  }, []);
 
   return (
     <div

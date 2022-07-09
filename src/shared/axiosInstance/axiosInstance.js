@@ -17,6 +17,10 @@ axiosInstance.interceptors.response.use(
       SessionService.clearSessionStorage();
       window.location.assign('/login');
     }
+    if (error.response.status === 403) {
+      window.location.assign('/403');
+    }
+
     return error;
   }
 );

@@ -1,4 +1,5 @@
 import axiosInstance from '../shared/axiosInstance/axiosInstance';
+import jwt_decode from 'jwt-decode';
 
 export default class SessionService {
   static isUserAuthenticated() {
@@ -16,6 +17,7 @@ export default class SessionService {
     });
     sessionStorage.removeItem('ACCESS_TOKEN');
   }
+
   static setInterceptors() {
     axiosInstance.interceptors.request.use((config) => {
       const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
@@ -25,5 +27,14 @@ export default class SessionService {
 
       return config;
     });
+  }
+
+  static isAdmin() {
+    if (!this.isUserAuthenticated()) return false;
+
+    const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
+    const decodedJwt = jwt_decode(accessToken);
+
+    return decodedJwt.isAdmin ?? false;
   }
 }
