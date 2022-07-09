@@ -30,7 +30,7 @@ export default class SessionService {
   }
 
   static isAdmin() {
-    if (!this.isUserAuthenticated()) return false;
+    if (!SessionService.isUserAuthenticated()) return false;
 
     const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
     const decodedJwt = jwt_decode(accessToken);
