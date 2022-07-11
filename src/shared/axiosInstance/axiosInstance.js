@@ -1,16 +1,9 @@
 import axios from 'axios';
 import SessionService from '../../services/SessionService';
-import * as fs from 'fs';
-import https from 'https';
 
-const httpsAgent = new https.Agent({
-  rejectUnauthorized: false,
-  cert: fs.readFileSync('./cert.pem'),
-  key: fs.readFileSync('./key.pem'),
-});
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const axiosInstance = axios.create({
-  httpsAgent,
   baseURL: 'https://api.hugoserver.com',
   headers: {
     'Content-type': 'application/json',
