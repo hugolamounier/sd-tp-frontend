@@ -11,7 +11,14 @@ import Forbidden from '../../features/Errors/403';
 function Routes() {
   return (
     <Switch>
-      <Route exact component={Home} path="/" />
+      <Route
+        exact
+        path="/"
+        render={(props) => {
+          window.location.assign('/home');
+        }}
+      />
+      <Route exact component={Home} path="/home" />
       <Route exact component={Login} path="/login" />
       <Route exact component={Forbidden} path="/403" />
       <PrivateRoute exact component={Artigos} path="/artigos" />
