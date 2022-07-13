@@ -16,6 +16,11 @@ function Artigos() {
     void getArtigos();
   }, []);
 
+  const handleDelete = async (id) => {
+    await deleteArtigo({ id });
+    await getArtigos();
+  };
+
   return (
     <Layout>
       <h1>Lista de Artigos</h1>
@@ -59,7 +64,7 @@ function Artigos() {
                   <button
                     type="button"
                     className="btn btn-danger"
-                    onClick={() => deleteArtigo({ id: artigo.id })}
+                    onClick={() => handleDelete(artigo.id)}
                   >
                     Apagar
                   </button>

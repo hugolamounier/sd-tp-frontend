@@ -23,7 +23,7 @@ class ArtigoService {
   }
 
   static async deleteArtigo({ id }) {
-    const response = await axiosInstance.delete(`/${id}`);
+    const response = await axiosInstance.delete(`/artigos/${id}/`);
 
     return response;
   }

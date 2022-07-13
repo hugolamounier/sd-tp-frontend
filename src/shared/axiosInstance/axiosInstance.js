@@ -4,7 +4,7 @@ import SessionService from '../../services/SessionService';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.hugoserver.com',
+  baseURL: 'http://127.0.0.1:8000',
   headers: {
     'Content-type': 'application/json',
   },
